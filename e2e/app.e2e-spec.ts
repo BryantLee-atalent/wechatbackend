@@ -1,14 +1,14 @@
-import { WechatbackendPage } from './app.po';
+import { MashAblePage } from './app.po';
 
-describe('wechatbackend App', function() {
-  let page: WechatbackendPage;
+describe('mash-able App', () => {
+  let page: MashAblePage;
 
   beforeEach(() => {
-    page = new WechatbackendPage();
+    page = new MashAblePage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });
