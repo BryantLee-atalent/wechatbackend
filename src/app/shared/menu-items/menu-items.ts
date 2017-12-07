@@ -46,13 +46,13 @@ const MENUITEMS = [
         icon: 'ti-view-grid'
       },
       {
-        state: 'smallform',
+        state: 'smallformmanage',
         name: '分榜单管理',
         type: 'link',
         icon: 'ti-view-grid'
       },
       {
-        state: 'form',
+        state: 'formmanage',
         name: '榜单管理',
         type: 'link',
         icon: 'ti-view-grid'
@@ -64,13 +64,13 @@ const MENUITEMS = [
         icon: 'ti-view-grid'
       },
       {
-        state: 'signup',
+        state: 'signupmanage',
         name: '报名审核',
         type: 'link',
         icon: 'ti-view-grid'
       },
       {
-        state: 'selection',
+        state: 'selectionmanage',
         name: '评选结果',
         type: 'link',
         icon: 'ti-view-grid'

@@ -16,6 +16,30 @@ export const AppRoutes: Routes = [ {
       path: 'accountmanage',
       loadChildren: './account-manage/account-manage.module#AccountManageModule'
     },
+    {
+      path: 'indexmanage',
+      loadChildren: './index-manage/index-manage.module#IndexManageModule'
+    },
+    {
+      path: 'formmanage',
+      loadChildren: './form-manage/form-manage.module#FormManageModule'
+    },
+    {
+      path: 'smallformmanage',
+      loadChildren: './smallform-manage/smallform-manage.module#SmallformManageModule'
+    },
+    {
+      path: 'mechanism',
+      loadChildren: './mechanism/mechanism.module#MechanismModule'
+    },
+    {
+      path: 'signupmanage',
+      loadChildren: './signupmanage/signupmanage.module#SignupmanageModule'
+    },
+    {
+      path: 'selectionmanage',
+      loadChildren: './selection-manage/selection-manage.module#SelectionManageModule'
+    },
   ]
 }, {
   path: '',
