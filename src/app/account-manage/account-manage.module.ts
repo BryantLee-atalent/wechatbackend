@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { AccountManageComponent } from './account-manage.component';
 import {AccountManageRoutes} from './account-manage.routing';
 import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {RequestService} from '../global/request-service.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AccountManageRoutes),
-    HttpClientModule
+    SharedModule
   ],
-  declarations: [AccountManageComponent]
+  declarations: [AccountManageComponent],
+  providers: [RequestService]
 })
 export class AccountManageModule { }

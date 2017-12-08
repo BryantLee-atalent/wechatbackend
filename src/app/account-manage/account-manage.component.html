@@ -1,3 +1,27 @@
-<p>
-  {{result}}
-</p>
+<div class="row">
+  <div class="col-sm-12" >
+    <app-card [title]="'Basic table'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>账号</th>
+            <th>手机号</th>
+            <th>上次登录时间</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of result.data">
+            <th scope="row">{{data.user_id}}</th>
+            <td>{{data.user_name}}</td>
+            <td>{{data.user_phone}}</td>
+            <td>{{data.login_time}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

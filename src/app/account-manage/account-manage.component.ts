@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {RequestService} from '../global/request-service.service';
 
 @Component({
   selector: 'app-account-manage',
@@ -7,13 +7,26 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./account-manage.component.css']
 })
 export class AccountManageComponent implements OnInit {
-  result: any
-  constructor(private http: HttpClient) { }
+  result: any = {
+    data: [],
+    count: ''
+  };
+  page = 1;
+  url = 'http://118.126.109.20:3000/' + this.page;
+  loaded = false;
+  constructor(private http: RequestService) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/account').subscribe(data => {
-      this.result = data;
-    })
+    const me = this;
+    const promise = new Promise((resolve, reject) => {
+      const result = me.http.getRequest(me.url);
+      resolve(result);
+    });
+
+    promise.then((value) => {
+      me.loaded = true;
+      me.result = value;
+    });
   }
 
 }

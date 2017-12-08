@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutes} from './app.routing';
 import {AppComponent} from './app.component';
@@ -30,6 +31,7 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
     RouterModule.forRoot(AppRoutes),
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ScrollModule
   ],
   exports: [ScrollModule],
