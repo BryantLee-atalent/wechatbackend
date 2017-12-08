@@ -29,4 +29,20 @@ export class AccountManageComponent implements OnInit {
     });
   }
 
+  delete(id: number) {
+    const me = this;
+    const promise = new Promise((resolve, reject) => {
+      const result = me.http.postRequest('http://118.126.109.20:3000/', {
+        user_id: id,
+        handler: 4
+      });
+      resolve(result);
+    });
+
+    promise.then((value) => {
+      me.loaded = true;
+      me.result = value;
+    });
+  }
+
 }

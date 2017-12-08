@@ -18,6 +18,7 @@
             <td>{{data.user_name}}</td>
             <td>{{data.user_phone}}</td>
             <td>{{data.login_time}}</td>
+            <td><button (click)="delete(data.user_id)">删除</button></td>
           </tr>
           </tbody>
         </table>
