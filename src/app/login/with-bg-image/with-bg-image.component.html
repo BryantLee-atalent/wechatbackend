@@ -1,0 +1,41 @@
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-card card-body auth-body">
+          <form class="md-float-material">
+            <div class="text-center">
+              <!--<img src="assets/images/auth/logo.png" alt="logo.png">-->
+            </div>
+            <div class="auth-box">
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h3 class="text-left txt-primary">登录</h3>
+                </div>
+              </div>
+              <hr/>
+              <div class="input-group">
+                <input type="text" class="form-control" #account placeholder="手机号">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <input type="password" class="form-control" #password placeholder="密码">
+                <span class="md-line"></span>
+              </div>
+              <div *ngIf="!isLogin" class="col-sm-12 col-xs-12 forgot-phone text-center">
+                <a class="text-inverse">用户名或密码错误</a>
+              </div>
+              <div class="row m-t-30">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="login(account.value, password.value)">Sign in</button>
+                </div>
+              </div>
+              <hr/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

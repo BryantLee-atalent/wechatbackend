@@ -36,6 +36,7 @@ const MENUITEMS = [
       {
         state: 'accountmanage',
         name: '账号管理',
+        active: true,
         type: 'link',
         icon: 'ti-home'
       },

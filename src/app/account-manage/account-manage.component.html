@@ -1,6 +1,20 @@
 <div class="row">
-  <div class="col-sm-12" >
-    <app-card [title]="'Basic table'" [classHeader]="true" [blockClass]="'table-border-style'">
+  <div class="col-sm-12">
+    <app-card [title]="'账户'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <br/>
+      <div class="form-group row">
+        <div class="col-sm-7">
+          <div class="bar7">
+            <form>
+              <input type="text" #searchq placeholder="请输入账号或手机号">
+              <button type="submit" (click)="searchData(searchq.value)"></button>
+            </form>
+          </div>
+        </div>
+        <div>
+          <button (click)="modalAdd.show()">新建账户</button>
+        </div>
+      </div>
       <div class="table-responsive">
         <table class="table">
           <thead>
@@ -18,7 +32,10 @@
             <td>{{data.user_name}}</td>
             <td>{{data.user_phone}}</td>
             <td>{{data.login_time}}</td>
-            <td><button (click)="delete(data.user_id)">删除</button></td>
+            <td>
+              <button type="button" (click)="clickdata = data ;modalDefault.show()">编辑</button>
+              &nbsp;<button (click)="clickdata = data ;modalDelete.show()">删除</button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -26,3 +43,135 @@
     </app-card>
   </div>
 </div>
+
+
+<app-modal-basic #modalAdd>
+  <div class="app-modal-header">
+    <h4 class="modal-title"> 添加</h4>
+    <button type="button" class="close basic-close" (click)="modalAdd.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body" *ngIf="addSuccess">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">用户名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="用户名" disabled [ngModel]="clickdata.user_name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">账号</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" disabled [ngModel]="clickdata.user_phone">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">初始密码</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" disabled value="123456">
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-body" *ngIf="!addSuccess">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">用户名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="用户名" [(ngModel)]="clickdata.user_name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">账号</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="使用手机号作为账号" [(ngModel)]="clickdata.user_phone">
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer" *ngIf="!addSuccess">
+    <button type="button" class="btn btn-default waves-effect" (click)="modalAdd.hide()">取消</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light " (click)="addUser()">保存</button>
+  </div>
+  <div class="app-modal-footer" *ngIf="addSuccess">
+    <button type="button" class="btn btn-default waves-effect" ngxClipboard [cbContent]="clickdata.user_name">复制信息
+    </button>
+    <button type="button" class="btn btn-primary waves-effect waves-light " (click)=" addSuccess = false">返回继续添加
+    </button>
+  </div>
+</app-modal-basic>
+
+<app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">编辑</h4>
+    <button type="button" class="close basic-close" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body" *ngIf="!resetSuccess">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">用户名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #account placeholder="用户名" [(ngModel)]="clickdata.user_name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">账号</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="账号" disabled [ngModel]="clickdata.user_phone">
+      </div>
+    </div>
+    <div style="float: right">
+      <button (click)="restartPwd()">重置密码</button>
+    </div>
+  </div>
+  <div class="app-modal-body" *ngIf="resetSuccess">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">用户名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #account placeholder="用户名" disabled [(ngModel)]="clickdata.user_name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">账号</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="账号" disabled [ngModel]="clickdata.user_phone">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">密码</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" disabled value="123456">
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer" *ngIf="!resetSuccess">
+    <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">取消</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light " (click)="updateAccount(account.value); modalDefault.hide()">保存
+    </button>
+  </div>
+  <div class="app-modal-footer" *ngIf="resetSuccess">
+    <button type="button" class="btn btn-default waves-effect" ngxClipboard [cbContent]="clickdata.user_name">复制信息</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light " (click)="resetSuccess = false">
+      返回编辑
+    </button>
+  </div>
+</app-modal-basic>
+
+<app-modal-basic #modalDelete>
+  <div class="app-modal-header">
+    <h4 class="modal-title">删除</h4>
+    <button type="button" class="close basic-close" (click)="modalDelete.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <div class="form-group row">
+      <P style="margin-left: 20px">确定删除账号[{{clickdata.user_name}}],删除后此账户将不能再登录后台</P>
+    </div>
+
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect" (click)="modalDelete.hide()">取消删除</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light "
+            (click)="delete(clickdata.user_id);modalDelete.hide()">确认删除
+    </button>
+  </div>
+</app-modal-basic>

@@ -8,7 +8,7 @@
             <i class="ti-menu"></i>
           </a>
           <a [routerLink]="['/']">
-            <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+            <!--<img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />-->
           </a>
           <a (click)="onMobileMenu()" class="mobile-options">
             <i class="ti-more"></i>
@@ -31,12 +31,12 @@
               <li class="user-profile header-notification">
                 <a [routerLink]="['/']">
                   <!--<img src="assets/images/user.png" alt="User-Profile-Image">-->
-                  <span>John Doe</span>
+                  <span>{{account}}</span>
                   <i class="ti-angle-down"></i>
                 </a>
                 <ul class="show-notification profile-notification">
                   <li>
-                    <a [routerLink]="['/']">
+                    <a (click)="logout()">
                       <i class="ti-layout-sidebar-left"></i> Logout
                     </a>
                   </li>

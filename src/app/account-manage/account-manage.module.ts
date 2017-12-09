@@ -5,12 +5,14 @@ import {AccountManageRoutes} from './account-manage.routing';
 import {RouterModule} from '@angular/router';
 import {RequestService} from '../global/request-service.service';
 import {SharedModule} from '../shared/shared.module';
+import {ClipboardModule} from 'ngx-clipboard';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AccountManageRoutes),
-    SharedModule
+    SharedModule,
+    ClipboardModule
   ],
   declarations: [AccountManageComponent],
   providers: [RequestService]

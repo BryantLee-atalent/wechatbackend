@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation, ElementRef, AfterViewInit} from '@angular/core';
 import 'rxjs/add/operator/filter';
 import {state, style, transition, animate, trigger, AUTO_STYLE} from '@angular/animations';
+import {Router} from '@angular/router';
 
 import { MenuItems } from '../../shared/menu-items/menu-items';
 
@@ -66,17 +67,21 @@ export class AdminLayoutComponent implements OnInit {
   isCollapsedMobile = 'no-block';
   toggleOn = true;
   windowWidth: number;
+  account: string;
   @ViewChild('searchFriends') search_friends: ElementRef;
   @ViewChild('toggleButton') toggle_button: ElementRef;
   @ViewChild('sideMenu') side_menu: ElementRef;
-  constructor(public menuItems: MenuItems) {
+  constructor(public menuItems: MenuItems, private router: Router) {
     const scrollHeight = window.screen.height - 150;
     this.innerHeight = scrollHeight + 'px';
     this.windowWidth = window.innerWidth;
     this.setMenuAttributs(this.windowWidth);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    const user = sessionStorage.getItem('User');
+    this.account = user;
+  }
 
   onClickedOutside(e: Event) {
       if (this.windowWidth < 768 && this.toggleOn && this.verticalNavType !== 'offcanvas') {
@@ -148,5 +153,11 @@ export class AdminLayoutComponent implements OnInit {
 
   onScroll(event) {
     this.isScrolled = false;
+  }
+
+  logout() {
+    const me = this;
+    sessionStorage.clear();
+    me.router.navigate(['login'])
   }
 }
