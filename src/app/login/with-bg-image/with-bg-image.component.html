@@ -27,7 +27,7 @@
               </div>
               <div class="row m-t-30">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="login(account.value, password.value)">Sign in</button>
+                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="addToast({title:'', msg:'登录中............', showClose: true, timeout: 5000, theme:'bootstrap', type:'wait', position:'top-center', closeOther:true});login(account.value, password.value)">登录</button>
                 </div>
               </div>
               <hr/>
@@ -38,4 +38,6 @@
     </div>
   </div>
 </section>
+
+<ng2-toasty [position]="position"></ng2-toasty>
 

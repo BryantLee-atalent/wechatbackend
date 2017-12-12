@@ -12,7 +12,7 @@ export class AccountManageComponent implements OnInit {
     count: ''
   };
   page = 1;
-  url = 'http://118.126.109.20:3000/' + this.page;
+  url = 'http://118.126.109.20:3000/user/' + this.page;
   loaded = false;
   clickdata: any = {
     user_name: '',
@@ -43,7 +43,7 @@ export class AccountManageComponent implements OnInit {
   delete(id: number) {
     const me = this;
     const promise = new Promise((resolve, reject) => {
-      const result = me.http.postRequest('http://118.126.109.20:3000/', {
+      const result = me.http.postRequest('http://118.126.109.20:3000/user/', {
         user_id: id,
         handler: -1
       });
@@ -58,7 +58,7 @@ export class AccountManageComponent implements OnInit {
   addUser() {
     const me = this;
     const promise = new Promise((resolve, reject) => {
-      const result = me.http.postRequest('http://118.126.109.20:3000/', {
+      const result = me.http.postRequest('http://118.126.109.20:3000/user/', {
         user_name: me.clickdata.user_name,
         user_phone: me.clickdata.user_phone,
         handler: 1
@@ -75,7 +75,7 @@ export class AccountManageComponent implements OnInit {
   searchData(string: any) {
     const me = this;
     const promise = new Promise((resolve, reject) => {
-      const result = me.http.postRequest('http://118.126.109.20:3000/', {
+      const result = me.http.postRequest('http://118.126.109.20:3000/user/', {
         user_name: string,
         handler: 4
       });
@@ -92,7 +92,7 @@ export class AccountManageComponent implements OnInit {
   restartPwd() {
     const me = this;
     const promise = new Promise((resolve, reject) => {
-      const result = me.http.postRequest('http://118.126.109.20:3000/', {
+      const result = me.http.postRequest('http://118.126.109.20:3000/user/', {
         user_id: me.clickdata.user_id,
         handler: 5
       });
@@ -107,7 +107,7 @@ export class AccountManageComponent implements OnInit {
   updateAccount(account: string) {
     const me = this;
     const promise = new Promise((resolve, reject) => {
-      const result = me.http.postRequest('http://118.126.109.20:3000/', {
+      const result = me.http.postRequest('http://118.126.109.20:3000/user/', {
         user_id: me.clickdata.user_id,
         user_name: account,
         handler: 3
