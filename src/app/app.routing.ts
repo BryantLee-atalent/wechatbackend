@@ -27,10 +27,6 @@ export const AppRoutes: Routes = [{
       loadChildren: './form-manage/form-manage.module#FormManageModule'
     },
     {
-      path: 'smallformmanage',
-      loadChildren: './smallform-manage/smallform-manage.module#SmallformManageModule'
-    },
-    {
       path: 'mechanism',
       loadChildren: './mechanism/mechanism.module#MechanismModule'
     },

@@ -47,12 +47,6 @@ const MENUITEMS = [
         icon: 'ti-view-grid'
       },
       {
-        state: 'smallformmanage',
-        name: '分榜单管理',
-        type: 'link',
-        icon: 'ti-view-grid'
-      },
-      {
         state: 'formmanage',
         name: '榜单管理',
         type: 'link',
